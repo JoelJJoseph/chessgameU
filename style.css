@@ -732,3 +732,42 @@ h3+#chess-facts {
         opacity: 0;
     }
 }
+
+.timer {
+    display: block;
+    margin: 10px auto;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 5px 10px;
+    text-align: center;
+    background-color: #f8f8f8;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    color: #333;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Style for the custom puzzles button */
+
+#custom-puzzles-button {
+    display: block;
+    margin: 10px auto;
+    padding: 8px 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+#custom-puzzles-button:hover {
+    background-color: #45a049;
+}
+
+#custom-puzzles-button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}

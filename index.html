@@ -12,9 +12,26 @@
             document.getElementById('no-js').style.display = 'none';
         }
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script>
+        // Fallback for confetti if CDN fails
+        if (typeof confetti === 'undefined') {
+            window.confetti = function(options) {
+                console.log("Confetti fallback called with options:", options);
+                // Basic fallback implementation
+                return {
+                    particleCount: options.particleCount || 50,
+                    spread: options.spread || 70,
+                    origin: options.origin || {
+                        y: 0.6,
+                        x: 0.5
+                    }
+                };
+            };
+        }
+    </script>
     <script src="./script.js" type="module"></script>
-    <title>Quick Chess 4 You</title>
+    <title>Chess Puzzles</title>
 </head>
 
 <body>
@@ -25,8 +42,12 @@
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg>
             <span>menu</span>
         </button>
-        <h1 id="title"><img src="./media/chess_knight_dark.svg" alt="Knight" class="title-icon" height="36"> Quick Chess 4 You</h1>
+        <h1 id="title"><img src="./media/chess_knight_dark.svg" alt="Knight" class="title-icon" height="36"> Chess Puzzles</h1>
     </header>
+
+    <div id="game-info">
+        <!-- Timer and game info will go here -->
+    </div>
 
     <main id="board">
         <div id="a1" class="R"><span></span></div>
@@ -127,7 +148,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 96 960 960"><path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg>
                 <span>close</span> 
             </button>
-            <h1 id="title"><img src="./media/chess_knight_dark.svg" alt="Knight" class="title-icon" height="36"> Quick Chess 4 You</h1>
+            <h1 id="title"><img src="./media/chess_knight_dark.svg" alt="Knight" class="title-icon" height="36"> Chess Puzzles</h1>
             <p id="game-info"></p>
             <h2>How to Play</h2>
             <p>Solve chess puzzles by finding the best move. Click on a piece to select it, then click on a highlighted square to move.</p>
